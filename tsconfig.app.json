@@ -1,27 +1,46 @@
 {
   "compilerOptions": {
+    // 指定 tsbuildinfo 文件的存储位置，用于增量编译，加速后续构建。
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    // 设置编译后的 JavaScript 代码的目标版本。ES2022 是一个较新的 ECMAScript 标准。
     "target": "ES2022",
+    // 强制类字段（class fields）使用 ECMAScript 标准的定义方式，而不是旧的 `[[Set]]` 语义。
     "useDefineForClassFields": true,
+    // 指定编译过程中需要引入的库文件。这里包括了 ES2022、DOM API 和 DOM 的可迭代对象 API。
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    // 指定生成代码的模块系统。ESNext 表示使用最新的 ECMAScript 模块标准。
     "module": "ESNext",
+    // 跳过对所有声明文件（*.d.ts）的类型检查。
     "skipLibCheck": true,
 
-    /* Bundler mode */
+    /* Bundler mode - 以下是为现代打包工具（如 Vite, esbuild）优化的选项 */
+    // 指定模块解析策略。'bundler' 模式会委托给打包工具处理模块路径。
     "moduleResolution": "bundler",
+    // 允许导入扩展名为 .ts 的文件。
     "allowImportingTsExtensions": true,
+    // 强制 import 和 export 语句的写法与实际模块类型一致。
     "verbatimModuleSyntax": true,
+    // 强制 TypeScript 将每个文件都视为一个模块。
     "moduleDetection": "force",
+    // 不生成任何输出文件（.js 文件）。
     "noEmit": true,
+    // 指定 JSX 代码的转换方式。'react-jsx' 使用 React 17+ 的新 JSX 转换，无需手动导入 React。
     "jsx": "react-jsx",
 
-    /* Linting */
+    /* Linting - 以下是代码质量和风格检查相关的选项 */
+    // 启用所有严格的类型检查选项。
     "strict": true,
+    // 报告未使用的局部变量。
     "noUnusedLocals": true,
+    // 报告未使用的函数参数。
     "noUnusedParameters": true,
+    // 仅允许在类型擦除后仍然有效的语法。
     "erasableSyntaxOnly": true,
+    // 禁止 switch 语句中出现意外的 case "fallthrough"。
     "noFallthroughCasesInSwitch": true,
+    // 检查并报告那些仅为了副作用而导入但未被使用的模块。
     "noUncheckedSideEffectImports": true
   },
+  // 指定需要被 TypeScript 编译器包含的文件。这里包含了 `src` 目录下的所有文件。
   "include": ["src"]
 }
