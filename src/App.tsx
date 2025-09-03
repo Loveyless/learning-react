@@ -1,11 +1,17 @@
-import Reducer from "./components/useReducer/useReducer";
-import ReducerExample from "./components/useReducer/useReducerExample";
+import "./App.css";
+
+import Wrapper from "./Wrapper";
 
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
+
+type ComponentModule = {
+  default: React.ComponentType<any>;
+};
 
 function App() {
+  const components: Record<string, ComponentModule> = import.meta.glob("./components/*/*.tsx", { eager: true });
+
   return (
     <>
       <div>
@@ -18,10 +24,15 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        {Reducer.name}
-        <Reducer />
-        {ReducerExample.name}
-        <ReducerExample />
+        {Object.entries(components).map(([path, module]) => {
+          const Component = module.default;
+          return (
+            <Wrapper key={path}>
+              {Component.name}
+              <Component />
+            </Wrapper>
+          );
+        })}
       </div>
     </>
   );
