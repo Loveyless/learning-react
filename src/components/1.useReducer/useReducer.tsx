@@ -10,7 +10,7 @@ function Reducer() {
   // only called once
   const initFn = (state: typeof initialState) => {
     state.count = Math.random();
-    console.log("initFn state :", state);
+    // console.log("initFn state :", state);
     return state;
   };
 

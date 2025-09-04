@@ -14,7 +14,7 @@ function ReducerExample() {
     action: { type: "add" | "sub" | "addItem" | "delItem" | "editItem" | "update_name" | "updated"; id: number; name?: string },
   ) => {
     const index = data.findIndex((item: any) => item.id === action.id);
-    console.log(data[index]);
+    // console.log(data[index]);
     switch (action.type) {
       case "add":
         data[index].count += 1;
