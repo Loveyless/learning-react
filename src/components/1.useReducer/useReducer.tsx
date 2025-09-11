@@ -31,7 +31,7 @@ function Reducer() {
 
   return (
     <>
-      <div className="flex flex-col border-red-300 border-1">
+      <div className="flex flex-col ">
         <button>reducer:{state.count}</button>
         <button onClick={() => dispatch({ type: "add" })}>dispatch add</button>
         <button onClick={() => dispatch({ type: "sub" })}>dispatch sub</button>

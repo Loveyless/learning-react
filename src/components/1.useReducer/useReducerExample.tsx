@@ -51,7 +51,7 @@ function ReducerExample() {
 
   return (
     <>
-      <div className="flex flex-col border-red-300 border-1">
+      <div className="flex flex-col ">
         <table width={800} border={1}>
           <thead>
             <tr>
@@ -67,7 +67,7 @@ function ReducerExample() {
                 <td>
                   {item.isEdit ? (
                     <input
-                      className="border-red-300 border-1 rounded-[5px]"
+                      className=" rounded-[5px]"
                       type="text"
                       value={item.name}
                       onChange={(e) => dispatch({ type: "update_name", id: item.id, name: e.target.value })}

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 
-function App() {
+function LayoutEffect() {
   const [count, setCount] = useState(0);
   // 不阻塞DOM;
   // useEffect(() => {
@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default LayoutEffect;
