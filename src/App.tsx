@@ -5,6 +5,7 @@ import viteLogo from "/vite.svg";
 import Wrapper from "./Wrapper";
 import UserProfileWithData from "./notAutoImportComponents/HigherOrderComponent/HigherOrderComponent";
 import UserProfile from "./notAutoImportComponents/HigherOrderComponent/HigherOrderComponent";
+import ArraySet from "./notAutoImportComponents/test/arraySet/arraySet";
 
 type ComponentModule = {
   default: React.ComponentType<any>;
@@ -16,12 +17,8 @@ function App() {
   return (
     <>
       <div className="flex m-2">
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={viteLogo} className="logo" alt="Vite logo" />
+        <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
       <div className="flex flex-wrap justify-evenly">
         {Object.entries(components).map(([path, module]) => {
@@ -41,6 +38,10 @@ function App() {
         <Wrapper>
           {UserProfile.name}
           <UserProfile userId="234" extraProp="some thing" />
+        </Wrapper>
+        <Wrapper>
+          {ArraySet.name}
+          <ArraySet />
         </Wrapper>
       </div>
     </>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // 模拟的API调用 (与上面相同)
 const fetchUserData = (userId: string) => {
-  console.log(`Fetching data for user: ${userId}`);
+  // console.log(`Fetching data for user: ${userId}`);
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ id: userId, name: `User ${userId}`, email: `user${userId}@example.com` });

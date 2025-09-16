@@ -11,9 +11,11 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "less": "^4.4.1",
     "prettier": "^3.6.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
