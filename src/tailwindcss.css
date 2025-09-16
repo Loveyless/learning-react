@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.tailwind-box{
+  @apply flex flex-col gap-2 justify-center items-center bg-gradient-to-r from-blue-100 to-purple-100 
+}
