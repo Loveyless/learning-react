@@ -1,16 +1,27 @@
 {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
   // "files" 属性可以用来显式指定编译器应该包含的文件列表。
   // 在这里设置为空数组，表示这个根 `tsconfig.json` 文件本身不直接编译任何文件。
   // 它的主要作用是作为一个“解决方案”或“容器”，来引用项目中的其他 `tsconfig.json` 文件。
   "files": [],
-
   // "references" 属性用于启用 TypeScript 的项目引用功能。
   // 这允许你将一个大的 TypeScript 项目分割成多个更小的、可以独立编译的子项目。
   // 这样做可以显著提高编译速度，因为 TypeScript 可以智能地只重新编译那些被修改过的子项目及其依赖项。
   "references": [
     // 引用适用于应用程序代码（例如 React 组件）的 tsconfig 配置。
-    { "path": "./tsconfig.app.json" },
+    {
+      "path": "./tsconfig.app.json"
+    },
     // 引用适用于 Node.js 环境代码（例如构建脚本、Vite 配置）的 tsconfig 配置。
-    { "path": "./tsconfig.node.json" }
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

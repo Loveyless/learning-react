@@ -11,10 +11,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.0.2",
+    "antd": "^5.27.4",
     "less": "^4.4.1",
     "prettier": "^3.6.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-router": "^7.9.1",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {

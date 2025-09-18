@@ -1,6 +1,9 @@
+import { RouterProvider } from "react-router";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+
+import { router } from "@/router/index";
 
 import Wrapper from "./Wrapper";
 import UserProfileWithData from "./notAutoImportComponents/HigherOrderComponent/HigherOrderComponent";
@@ -43,6 +46,10 @@ function App() {
           {ArraySet.name}
           <ArraySet />
         </Wrapper>
+      </div>
+      <div>
+        路由导航
+        <RouterProvider router={router} />
       </div>
     </>
   );

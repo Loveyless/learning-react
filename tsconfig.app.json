@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     // 指定 tsbuildinfo 文件的存储位置，用于增量编译，加速后续构建。
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     // 设置编译后的 JavaScript 代码的目标版本。ES2022 是一个较新的 ECMAScript 标准。
