@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router";
-import "./App.css";
+import "./css/App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
@@ -25,7 +25,6 @@ function App() {
       </div>
 
       <div>
-        路由导航
         <RouterProvider router={router} />
       </div>
 

@@ -11,6 +11,11 @@ export default function Menu() {
   };
   const menuItems = [
     {
+      key: "/langchain",
+      label: "Langchain",
+      icon: <AppstoreOutlined />,
+    },
+    {
       key: "/home",
       label: "Home",
       icon: <AppstoreOutlined />,

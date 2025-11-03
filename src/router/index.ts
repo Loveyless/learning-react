@@ -3,6 +3,7 @@ import Home from "@/views/Home";
 import About from "@/views/About";
 import NotFound from "@/views/404";
 import Layout from "@/layout/index";
+import Langchain from "@/views/langchain/index";
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true, // 默认路由
+        path: "/langchain",
+        Component: Langchain,
+      },
+      {
         path: "/home", // 静态路由
         Component: Home,
       },
