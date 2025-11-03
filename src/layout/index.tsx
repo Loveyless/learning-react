@@ -4,7 +4,7 @@ import Content from "./Content";
 import { Layout as AntdLayout } from "antd";
 export default function Layout() {
   return (
-    <AntdLayout>
+    <AntdLayout style={{ height: "100vh" }}>
       <AntdLayout.Sider>
         <Menu />
       </AntdLayout.Sider>
