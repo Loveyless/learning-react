@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true, // 默认路由
-        // path: "/home", // 静态路由
+        path: "/home", // 静态路由
         Component: Home,
       },
       {

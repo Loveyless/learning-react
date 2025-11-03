@@ -23,6 +23,12 @@ function App() {
         <img src={viteLogo} className="logo" alt="Vite logo" />
         <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
+
+      <div>
+        路由导航
+        <RouterProvider router={router} />
+      </div>
+
       <div className="flex flex-wrap justify-evenly">
         {Object.entries(components).map(([path, module]) => {
           const Component = module.default;
@@ -46,10 +52,6 @@ function App() {
           {ArraySet.name}
           <ArraySet />
         </Wrapper>
-      </div>
-      <div>
-        路由导航
-        <RouterProvider router={router} />
       </div>
     </>
   );
