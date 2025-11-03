@@ -12,15 +12,18 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true, // 默认路由
-        path: "/langchain",
         Component: Langchain,
       },
       {
-        path: "/home", // 静态路由
+        path: "langchain",
+        Component: Langchain,
+      },
+      {
+        path: "home", // 静态路由 在子路由中，推荐使用相对路径 "home" 而不是 "/home"
         Component: Home,
       },
       {
-        path: "/about/:id", // 动态路由
+        path: "about/:id", // 动态路由
         Component: About,
       },
       {

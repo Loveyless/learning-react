@@ -6,8 +6,10 @@ function Langchain() {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
   const handleSendMessage = async () => {
-    const result = await sendMessage(text);
-    setResult(result);
+    setResult("");
+    await sendMessage(text, (chunk) => {
+      setResult((prevResult) => prevResult + chunk);
+    });
   };
   return (
     <div>

@@ -1,7 +1,7 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 
-async function sendMessage(text: string) {
+async function sendMessage(text: string, onUpdate: (chunk: string) => void) {
   console.log(import.meta.env.VITE_OPENAI_API_KEY, import.meta.env.VITE_OPENAI_BASICURL);
   // 1. Instantiate the model
   const model = new ChatOpenAI({
@@ -18,20 +18,16 @@ async function sendMessage(text: string) {
   });
 
   // 2. post messages to the model
-  const messages = [new SystemMessage("Translate the following from English into Italian"), new HumanMessage(text)];
+  const messages = [new SystemMessage("和你对话的是一个使用中文的人，所以你也要用中文回答"), new HumanMessage(text)];
   // await model.invoke("Hello");
   // await model.invoke([{ role: "user", content: "Hello" }]);
   // await model.invoke([new HumanMessage("hi!")]);
-  await model.invoke(messages);
-
   // 3. Streaming
   const stream = await model.stream(messages);
-  const chunks = [];
   for await (const chunk of stream) {
-    chunks.push(chunk);
+    onUpdate(chunk.content as string);
     console.log(`${chunk.content}|`);
   }
-  return chunks.map((chunk) => chunk.content).join("");
 }
 
 export default sendMessage;
