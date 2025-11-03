@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Input, Button, Layout, List, Avatar, Spin, Flex } from "antd";
+import { Input, Button, List, Avatar, Spin, Flex } from "antd";
 import { SendOutlined, UserOutlined, RobotOutlined } from "@ant-design/icons";
 import sendMessage from "./basic";
-
 
 interface Message {
   role: "user" | "assistant";
@@ -10,46 +9,34 @@ interface Message {
 }
 
 function Langchain() {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Hello, how can I help you today?" },
-    { role: "user", content: "Hello, how are you?" },
-    { role: "assistant", content: "I'm doing great, thank you!" },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-    { role: "user", content: "What is the weather like in Tokyo?" },
-    { role: "assistant", content: "The weather in Tokyo is sunny and warm." },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messageEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+  useEffect(() => {
+    if (!isLoading) {
+      inputRef.current?.focus();
+    }
+  }, [isLoading]);
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userMessage: Message = { role: "user", content: inputValue };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    const assistantMessage: Message = { role: "assistant", content: "" };
+    const newMessages = [...messages, userMessage, assistantMessage];
+    const historyMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setInputValue("");
     setIsLoading(true);
 
-    const assistantMessage: Message = { role: "assistant", content: "" };
-    setMessages((prevMessages) => [...prevMessages, assistantMessage]);
-
     try {
-      await sendMessage(inputValue, (chunk) => {
+      await sendMessage(historyMessages, (chunk) => {
         setMessages((prevMessages) => {
           const newMessages = [...prevMessages];
           const lastMessage = newMessages[newMessages.length - 1];
@@ -95,11 +82,7 @@ function Langchain() {
                 padding: "8px 0",
               }}
             >
-              <Flex
-                gap="middle"
-                align="start"
-                style={{ flexDirection: item.role === "user" ? "row-reverse" : "row" }}
-              >
+              <Flex gap="middle" align="start" style={{ flexDirection: item.role === "user" ? "row-reverse" : "row" }}>
                 <Avatar icon={item.role === "user" ? <UserOutlined /> : <RobotOutlined />} />
                 <div
                   style={{
@@ -130,6 +113,7 @@ function Langchain() {
       <div className="pt-4">
         <Flex gap="middle">
           <Input.TextArea
+            ref={inputRef}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
